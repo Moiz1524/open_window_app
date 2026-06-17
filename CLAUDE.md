@@ -1,0 +1,34 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+| Task | Command |
+|------|---------|
+| Dev server | `bin/dev` |
+| First-time setup | `bin/setup` |
+| Run all tests | `bin/rails test` |
+| Run single test | `bin/rails test test/models/foo_test.rb:42` |
+| Lint | `bin/rubocop` |
+| Lint + autofix | `bin/rubocop -A` |
+| Security scan (gems) | `bin/bundler-audit` |
+| Security scan (code) | `bin/brakeman --quiet` |
+| Full CI pipeline | `bin/ci` |
+| Background jobs | `bin/jobs` |
+
+## Architecture
+
+Rails 8.1 app using the **Solid Stack**: Solid Queue (jobs), Solid Cache, and Solid Cable — all database-backed via PostgreSQL, with no Redis dependency.
+
+**Frontend**: No build step. Importmap for ES modules, Propshaft as asset pipeline, Turbo + Stimulus (Hotwire) for interactivity.
+
+**Deployment**: Kamal (Docker-based). Secrets in `.kamal/secrets`; `RAILS_MASTER_KEY` is injected at deploy time. The job queue runs in-process with Puma by default (`SOLID_QUEUE_IN_PUMA=true`).
+
+## Linting
+
+`.rubocop.yml` inherits both `rubocop-rails-omakase` and `rubocop-shopify`. NewCops are enabled, so new Rubocop cops apply automatically on upgrade.
+
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on push/PR to main: Brakeman → bundler-audit → importmap audit → Rubocop → test suite.
