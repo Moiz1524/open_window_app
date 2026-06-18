@@ -67,3 +67,5 @@ group :test do
 end
 
 gem "rubocop-shopify", require: false
+
+gem "devise", "~> 5.0"
