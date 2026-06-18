@@ -8,8 +8,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|---------|
 | Dev server | `bin/dev` |
 | First-time setup | `bin/setup` |
-| Run all tests | `bin/rails test` |
-| Run single test | `bin/rails test test/models/foo_test.rb:42` |
+| Run all tests | `bundle exec rspec` |
+| Run single spec | `bundle exec rspec spec/models/foo_spec.rb:42` |
+| Run system specs | `bundle exec rspec spec/system` |
 | Lint | `bin/rubocop` |
 | Lint + autofix | `bin/rubocop -A` |
 | Security scan (gems) | `bin/bundler-audit` |
