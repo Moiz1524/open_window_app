@@ -1,1 +1,108 @@
-<p>This is the index page of app.</p>
+<% content_for :title, "Open Window — Team Scheduling Made Simple" %>
+
+<%# Hero %>
+<section class="bg-gradient-to-b from-indigo-50 to-white pt-20 pb-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+    <span class="inline-block rounded-full bg-indigo-100 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-700 mb-6">Real-time availability</span>
+    <h1 class="text-5xl sm:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+      Stop chasing your team.<br>
+      <span class="text-indigo-600">See who's free, right now.</span>
+    </h1>
+    <p class="text-xl text-slate-500 max-w-2xl mx-auto mb-10">
+      Open Window connects your team's calendars and shows live availability — no more back-and-forth emails to find a meeting slot that works for everyone.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <% if user_signed_in? %>
+        <%= link_to "Go to Dashboard →", dashboard_path, class: "rounded-lg bg-indigo-600 px-8 py-4 text-base font-semibold text-white hover:bg-indigo-700 transition-colors shadow-sm" %>
+      <% else %>
+        <%= link_to "Get started free", new_user_registration_path, class: "rounded-lg bg-indigo-600 px-8 py-4 text-base font-semibold text-white hover:bg-indigo-700 transition-colors shadow-sm" %>
+        <%= link_to "Log in", new_user_session_path, class: "rounded-lg border border-slate-300 px-8 py-4 text-base font-semibold text-slate-700 hover:bg-slate-50 transition-colors" %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%# Feature grid %>
+<section class="py-20 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Everything your team needs to stay in sync</h2>
+      <p class="text-lg text-slate-500 max-w-xl mx-auto">One dashboard. Every teammate. All calendars. Updated the moment something changes.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-8">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">Team Management</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Organise your team into groups, set roles, and manage who sees whose calendar — all from one clean interface.</p>
+      </div>
+
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-8">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">Real-time Availability</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Availability slots update live as teammates accept or decline events — you always see the most accurate picture of who's free.</p>
+      </div>
+
+      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-8">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">Calendar Sync</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Connect Google Calendar, Outlook, or iCal. Open Window unifies every source so scheduling decisions are based on complete information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# How it works %>
+<section class="py-20 bg-slate-50">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl font-bold text-slate-900 mb-4">Up and running in minutes</h2>
+    </div>
+    <ol class="space-y-8">
+      <li class="flex gap-6 items-start">
+        <span class="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white font-bold text-sm">1</span>
+        <div>
+          <h4 class="font-semibold text-slate-900 mb-1">Create your account</h4>
+          <p class="text-slate-500 text-sm">Sign up in seconds — no credit card required.</p>
+        </div>
+      </li>
+      <li class="flex gap-6 items-start">
+        <span class="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white font-bold text-sm">2</span>
+        <div>
+          <h4 class="font-semibold text-slate-900 mb-1">Invite your team</h4>
+          <p class="text-slate-500 text-sm">Add teammates by email and choose what they can see.</p>
+        </div>
+      </li>
+      <li class="flex gap-6 items-start">
+        <span class="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white font-bold text-sm">3</span>
+        <div>
+          <h4 class="font-semibold text-slate-900 mb-1">Connect calendars &amp; go</h4>
+          <p class="text-slate-500 text-sm">Link your calendars and start seeing live availability across your whole team instantly.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<%# CTA %>
+<section class="py-24 bg-indigo-600">
+  <div class="mx-auto max-w-2xl px-4 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Ready to open the window?</h2>
+    <p class="text-indigo-200 mb-8 text-lg">Join teams already using Open Window to schedule smarter.</p>
+    <% unless user_signed_in? %>
+      <%= link_to "Create a free account", new_user_registration_path, class: "inline-block rounded-lg bg-white px-8 py-4 text-base font-semibold text-indigo-600 hover:bg-indigo-50 transition-colors shadow-sm" %>
+    <% end %>
+  </div>
+</section>
