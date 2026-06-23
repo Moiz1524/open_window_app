@@ -20,11 +20,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-Rails 8.1 app using the **Solid Stack**: Solid Queue (jobs), Solid Cache, and Solid Cable — all database-backed via PostgreSQL, with no Redis dependency.
+Rails 8.1 app with PostgreSQL. Background jobs use **Sidekiq** (requires Redis). Action Cable uses the `async` adapter.
 
 **Frontend**: No build step. Importmap for ES modules, Propshaft as asset pipeline, Turbo + Stimulus (Hotwire) for interactivity.
 
-**Deployment**: Kamal (Docker-based). Secrets in `.kamal/secrets`; `RAILS_MASTER_KEY` is injected at deploy time. The job queue runs in-process with Puma by default (`SOLID_QUEUE_IN_PUMA=true`).
+**Deployment**: Kamal (Docker-based). Secrets in `.kamal/secrets`; `RAILS_MASTER_KEY` is injected at deploy time. Run the Sidekiq worker separately with `bin/jobs`.
 
 ## Linting
 
