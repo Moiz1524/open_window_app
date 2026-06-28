@@ -1,5 +1,11 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
+
+  authenticate :user do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 
   root "home#index"
   devise_for :users, controllers: { registrations: "users/registrations" }

@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
 require_relative "../config/environment"
+
+require "sidekiq/cli"
+
+cli = Sidekiq::CLI.instance
+cli.parse
+cli.run
