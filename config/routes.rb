@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
   get "dashboard", to: "dashboard#index"
 
+  resource :settings, only: [ :show, :update ], controller: "settings"
+  delete "settings/profile_picture", to: "settings#destroy_profile_picture", as: :settings_profile_picture
+
   resources :invitations, only: [ :new, :create ]
   get  "invitations/:token/accept",   to: "invitation_acceptances#show",    as: :accept_invitation
   post "invitations/:token/accept",   to: "invitation_acceptances#create"

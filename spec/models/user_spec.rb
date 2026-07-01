@@ -32,4 +32,27 @@ RSpec.describe User, type: :model do
       expect(user.errors[:password]).to be_present
     end
   end
+
+  describe "profile picture" do
+    let(:user) { User.create!(email: "user@example.com", password: "password123") }
+
+    it "accepts a valid image" do
+      user.profile_picture.attach(
+        io: File.open(Rails.root.join("spec/fixtures/files/avatar.png")),
+        filename: "avatar.png",
+        content_type: "image/png"
+      )
+      expect(user).to be_valid
+    end
+
+    it "rejects an unsupported content type" do
+      user.profile_picture.attach(
+        io: StringIO.new("hello"),
+        filename: "notes.txt",
+        content_type: "text/plain"
+      )
+      expect(user).not_to be_valid
+      expect(user.errors[:profile_picture]).to be_present
+    end
+  end
 end
