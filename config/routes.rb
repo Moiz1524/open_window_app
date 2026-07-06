@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root "home#index"
   devise_for :users, controllers: { registrations: "users/registrations" }
   get "dashboard", to: "dashboard#index"
+  get "members", to: "members#index"
 
   resource :settings, only: [ :show, :update ], controller: "settings"
   delete "settings/profile_picture", to: "settings#destroy_profile_picture", as: :settings_profile_picture
