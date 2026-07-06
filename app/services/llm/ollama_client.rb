@@ -1,6 +1,6 @@
 require "net/http"
 
-module LLm
+module Llm
   class Error < StandardError; end
 
   class OllamaClient
@@ -10,7 +10,7 @@ module LLm
       host = "http://localhost:11434"
       
       @uri = URI.join(host, "/api/chat")
-      @model = "qwen2.5:7b"
+      @model = "qwen2.5:0.5b"
     end
 
     def chat(messages:, tools: [])
